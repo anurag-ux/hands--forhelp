@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Save Web Form Data to Spreadsheets</title>
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script>
+		function SubForm (){
+			$.ajax({
+				url:"https://api.apispreadsheets.com/data/12439/",
+				type:"post",
+				data:$("#myForm").serializeArray(),
+				success: function(){
+					alert("Thanks a lot!! :)")
+				},
+				error: function(){
+					alert("There was an error :(")
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+    <div class="container">
+    <h1><p class="navbar-text navbar">Send us information</p></h1>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+	<form id="myForm" action="/thanks" method="POST">
+		<label for="type">Type</label>
+		<input class="form-control" name="type" placeholder="oxygen/plasma/beds" />
+		<br/>
+		<label>State</label>
+		<input class="form-control" name="state" />
+		<br/>
+		<label>District</label>
+		<input class="form-control" name="district" />
+		<br/>
+		<label>Supplier Name</label>
+		<input class="form-control" name="personName" />
+		<br/>
+		<label>Contact Number</label>
+		<input class="form-control" name="number" />
+		<br/>
+	</form>
+	<button class="btn btn-default" onclick='SubForm()'>Submit</button>
+</div>
+    </div> 
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</body>
+</html>
